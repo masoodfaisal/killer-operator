@@ -16,7 +16,7 @@ spec:
       containers:
         - name: killer-operator
           # Replace this with the built image name
-          image: quay.io/masood_faisal/publicrepo
+          image: REPLACE_IMAGE
           command:
           - killer-operator
           imagePullPolicy: Always

@@ -10,8 +10,8 @@ import (
 	// Import all Kubernetes client auth plugins (e.g. Azure, GCP, OIDC, etc.)
 	_ "k8s.io/client-go/plugin/pkg/client/auth"
 
-	"github.com/example-inc/killer-operator/pkg/apis"
-	"github.com/example-inc/killer-operator/pkg/controller"
+	"github.com/example-inc/killer-operator/killer-operator/pkg/apis"
+	"github.com/example-inc/killer-operator/killer-operator/pkg/controller"
 
 	"github.com/operator-framework/operator-sdk/pkg/k8sutil"
 	"github.com/operator-framework/operator-sdk/pkg/leader"
@@ -61,8 +61,7 @@ func main() {
 
 	printVersion()
 
-	//namespace, err := k8sutil.GetWatchNamespace()
-	_, err := k8sutil.GetWatchNamespace()
+	namespace, err := k8sutil.GetWatchNamespace()
 	if err != nil {
 		log.Error(err, "Failed to get watch namespace")
 		os.Exit(1)
@@ -86,7 +85,7 @@ func main() {
 
 	// Create a new Cmd to provide shared dependencies and start components
 	mgr, err := manager.New(cfg, manager.Options{
-		//Namespace:          namespace,
+		Namespace:          namespace,
 		MetricsBindAddress: fmt.Sprintf("%s:%d", metricsHost, metricsPort),
 	})
 	if err != nil {

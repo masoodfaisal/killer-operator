@@ -1,7 +1,6 @@
-apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  creationTimestamp: null
   name: killer-operator
 rules:
 - apiGroups:
@@ -15,7 +14,7 @@ rules:
   - configmaps
   - secrets
   verbs:
-  - '*'
+  - "*"
 - apiGroups:
   - ""
   resources:
@@ -30,25 +29,19 @@ rules:
   - replicasets
   - statefulsets
   verbs:
-  - '*'
+  - "*"
 - apiGroups:
   - monitoring.coreos.com
   resources:
   - servicemonitors
   verbs:
-  - get
-  - create
+  - "get"
+  - "create"
 - apiGroups:
   - apps
-  resourceNames:
-  - killer-operator
   resources:
   - deployments/finalizers
+  resourceNames:
+  - killer-operator
   verbs:
-  - update
-- apiGroups:
-  - faisal.example.com
-  resources:
-  - '*'
-  verbs:
-  - '*'
+  - "update"

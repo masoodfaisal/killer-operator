@@ -1,0 +1,8 @@
+apiVersion: faisal.example.com/v1alpha1
+kind: PodKiller
+metadata:
+  name: example-podkiller
+spec:
+  # Add fields here
+  namespaceToAvoid:
+  - faisal
